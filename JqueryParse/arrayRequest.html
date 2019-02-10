@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>JavaScript - read JSON from URL</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div class="mypanel"></div>
+<script>
+    $.getJSON('http://tallatgoldart.com/MujahidProject/whatsappgrouplink/categories.php', function(data) {
+		$.each(data, function (index, value) {
+		var txt = "";
+		for(var i = 0;i<=value.length;i++){
+		$(".mypanel").append("<a href='#'>"+value[i].title+"</a><br>");
+		}
+    });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>JavaScript - read JSON from URL</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div class="mypanel"></div>
+
+    <script>
+   $.getJSON("https://www.bedtime.com/wp-json/wp/v2/posts?categories=24&per_page=100", function(data){
+    for (var i = 0, len = data.length; i < len; i++) {
+        console.log(data[i]);
+		 var entry = data[i];
+		 //$(".mypanel").append("<a href='#'>"+JSON.stringify(data[i].title.rendered)+"</a><br>");
+		 //$(".mypanel").append(""+JSON.stringify(data[i].excerpt.rendered)+"<br>");
+$(".mypanel").append("INSERT INTO `posts`(`cat_id`, `title`, `content`) VALUES ('24',"+JSON.stringify(data[i].title.rendered)+","+JSON.stringify(data[i].content.rendered)+");");
+		 //$(".mypanel").append("<span style='background-color:#CCC; padding:10px;'>"+JSON.stringify(data[i].content.rendered)+"</span><br>");
+    }
+	});
+    </script>
+    
+</body>
+</html>
